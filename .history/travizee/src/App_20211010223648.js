@@ -9,6 +9,10 @@ import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 import "./App.css";
 
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+// injectTapEventPlugin();
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +23,8 @@ class App extends Component {
     };
 
     history.listen((location, action) => {
-
+      // clear alert on location change
+      this.props.clearAlerts();
     });
   }
 
@@ -53,7 +58,7 @@ class App extends Component {
 
             
 
-            <Redirect from="*" to="/register" />
+            <Redirect from="*" to="/" />
           </Switch>
         </div>
       </Router>

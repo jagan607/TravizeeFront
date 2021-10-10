@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Register } from "./components/Register";
 import { history } from "./_helpers/history";
+import { alertActions } from "./_actions/alert.actions";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { connect } from "react-redux";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -8,6 +9,10 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 import "./App.css";
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+// injectTapEventPlugin();
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +24,8 @@ class App extends Component {
     };
 
     history.listen((location, action) => {
-
+      // clear alert on location change
+      this.props.clearAlerts();
     });
   }
 
@@ -53,7 +59,7 @@ class App extends Component {
 
             
 
-            <Redirect from="*" to="/register" />
+            <Redirect from="*" to="/" />
           </Switch>
         </div>
       </Router>
@@ -67,11 +73,12 @@ const style = {
 };
 
 function mapState(state) {
-  const {  authentication } = state;
-  return { authentication };
+  const { alert, authentication } = state;
+  return { alert, authentication };
 }
 
 const actionCreators = {
+  clearAlerts: alertActions.clear,
 };
 
 const connectedApp = connect(mapState, actionCreators)(App);

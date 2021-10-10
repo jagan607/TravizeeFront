@@ -50,7 +50,7 @@ export const userActions = {
           history.push("/login");
           Swal.fire({
             title: "Success!",
-            text: "Registered Successfully !",
+            text: "Check your mail for the confirmation link",
             icon: "success",
             confirmButtonText: "Okay",
           });

@@ -17,7 +17,7 @@ async function login(email, password) {
   };
 
   const response = await fetch(
-    `http://localhost:8086/api/auth/login`,
+    `http:localhost:8086/api/auth/login`,
     requestOptions
   );
   const user = await handleResponse(response);
@@ -39,7 +39,7 @@ async function register(email, password) {
   };
 
   const response = await fetch(
-    `http://localhost:8086/api/auth/signup`,
+    `http:localhost:8086/api/auth/signup`,
     requestOptions
   );
   localStorage.setItem("registration", JSON.stringify(response));

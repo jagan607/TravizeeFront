@@ -1,5 +1,6 @@
 import { userConstants } from "./../constants/user.constants";
 import { userService } from "./../services/user.service";
+import { alertActions } from "./alert.actions";
 import { history } from "./../_helpers/history";
 import Swal from "sweetalert2";
 
@@ -25,6 +26,7 @@ export const userActions = {
             confirmButtonText: "Okay",
           });
           dispatch(failure(error.toString()));
+          dispatch(alertActions.error(error.toString()));
         }
       );
     };
@@ -50,14 +52,16 @@ export const userActions = {
           history.push("/login");
           Swal.fire({
             title: "Success!",
-            text: "Registered Successfully !",
+            text: "Check your mail for the confirmation link",
             icon: "success",
             confirmButtonText: "Okay",
           });
   
+          dispatch(alertActions.success("Registration successful"));
         },
         (error) => {
           dispatch(failure(error.toString()));
+          dispatch(alertActions.error(error.toString()));
           Swal.fire({
             title: "Error!",
             text: error.toString(),
