@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Register } from "./components/Register";
-import { Login } from "./components/Login";
 import { history } from "./_helpers/history";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { connect } from "react-redux";
