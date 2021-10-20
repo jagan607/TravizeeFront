@@ -79,7 +79,7 @@ class Login extends Component {
     if (this.props.loggingIn) {
       isLoading = this.props.loggingIn;
     }
-    // console.log("token", this.props.confirm_token);
+    console.log("token", this.props.confirm_token);
 
     return (
       <div style={{backgroundColor:"#fff", zIndex:'1'}} className="App">
@@ -200,7 +200,7 @@ function mapState(state) {
   console.log("state", state.registration);
   const { loggingIn } = state.authentication;
   // const {confirm_token} = state.registration.user;
-  return { loggingIn };
+  return { loggingIn , confirm_token};
 }
 
 const actionCreators = {
