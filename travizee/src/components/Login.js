@@ -8,6 +8,8 @@ import ReactGifLoader from "./ReactGifLoader";
 import Swal from "sweetalert2";
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import DehazeIcon from '@material-ui/icons/Dehaze';
+import { FacebookFilled } from "@ant-design/icons";
+import { Button } from "antd";
 
 
 
@@ -19,6 +21,19 @@ const validateForm = (errors) => {
   let valid = true;
   Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
   return valid;
+};
+
+
+const initFacebookLogin = () => {
+  const FB = this.window.FB;
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: "968145924043423", //replace with ur appid
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: "v7.0",
+    });
+  };
 };
 
 class Login extends Component {
@@ -33,6 +48,7 @@ class Login extends Component {
         password: "",
       },
     };
+    this.getFacebookAccessToken = this.getFacebookAccessToken.bind(this);
   }
 
   componentWillMount(){
@@ -40,6 +56,24 @@ class Login extends Component {
   
   }
 
+  getFacebookAccessToken() {
+    console.log("hey");
+    console.log(window.FB);
+
+    window.FB.login(
+      function (response) {
+        if (response.status === "connected") {
+          const facebookLoginRequest = {
+            accessToken: response.authResponse.accessToken,
+          };
+          this.props.facebookLogin(facebookLoginRequest);
+        } else {
+          console.log(response);
+        }
+      },
+      { scope: "email" }
+    );
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -114,6 +148,7 @@ class Login extends Component {
                     {isLoading ? (
                 <ReactGifLoader></ReactGifLoader>
               ) : (
+                <div>
                   <form onSubmit={this.handleSubmit} noValidate>
                     <h3 style={{color:"#222831"}}>Sign In</h3>
                     <div className="form-group">
@@ -169,6 +204,14 @@ class Login extends Component {
                       <Link to={"/forgotPassword"}>Forgot password?</Link>
                     </p>
                   </form>
+                  <button
+                      type="submit"
+                      className="btn btn-light"
+                      onClick = {this.getFacebookAccessToken}
+                    >
+                      Sign in
+                    </button>
+                </div>  
               )}
                 </div>
       </div>                    
@@ -203,6 +246,7 @@ function mapState(state) {
 
 const actionCreators = {
   login: userActions.login,
+  facebookLogin: userActions.facebookLogin,
   logout: userActions.logout,
 };
 

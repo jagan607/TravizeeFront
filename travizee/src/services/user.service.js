@@ -1,6 +1,7 @@
 export const userService = {
   login,
   register,
+  facebookLogin,
 };
 
 async function login(email, password) {
@@ -62,3 +63,26 @@ function handleResponse(response) {
       return data;
     });
   }
+
+  async function facebookLogin(facebookLoginRequest) {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Headers": "*",
+      },
+      body: JSON.stringify({ facebookLoginRequest }),
+    };
+  
+    const response = await fetch(
+      "http://localhost:8086/facebook/signin",
+      requestOptions
+    );
+    const user = await handleResponse(response);
+    // store user details and jwt token in local storage to keep user logged in between page refreshes
+    localStorage.setItem("user", JSON.stringify(user));
+    return user;
+  }
+  
