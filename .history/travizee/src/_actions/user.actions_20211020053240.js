@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 export const userActions = {
     login,
     register,
-    facebookLogin,
   };
 
   function login(email, password) {
@@ -77,37 +76,5 @@ export const userActions = {
     }
     function failure(error) {
       return { type: userConstants.REGISTER_FAILURE, error };
-    }
-  }
-
-  function facebookLogin(facebookLoginRequest) {
-    return (dispatch) => {
-      dispatch(request({ facebookLoginRequest }));
-  
-      userService.facebookLogin(facebookLoginRequest).then(
-        (user) => {
-          dispatch(success(user));
-          history.push("/cprofile/"+user.signupResponse.token);
-        },
-        (error) => {
-          Swal.fire({
-            title: "Error!",
-            text: error.toString(),
-            icon: "error",
-            confirmButtonText: "Okay",
-          });
-          dispatch(failure(error.toString()));
-        }
-      );
-    };
-  
-    function request(user) {
-      return { type: userConstants.LOGIN_REQUEST, user };
-    }
-    function success(user) {
-      return { type: userConstants.LOGIN_SUCCESS, user };
-    }
-    function failure(error) {
-      return { type: userConstants.LOGIN_FAILURE, error };
     }
   }
