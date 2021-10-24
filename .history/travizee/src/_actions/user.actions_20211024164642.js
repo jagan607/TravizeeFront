@@ -82,12 +82,12 @@ export const userActions = {
 
   function facebookLogin(facebookLoginRequest) {
     return (dispatch) => {
-      dispatch(request( facebookLoginRequest ));
+      dispatch(request({ facebookLoginRequest }));
   
       userService.facebookLogin(facebookLoginRequest).then(
         (user) => {
           dispatch(success(user));
-          history.push("/wallet");
+          history.push("/createprofile/"+user.signupResponse.token);
         },
         (error) => {
           Swal.fire({

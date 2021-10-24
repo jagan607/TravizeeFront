@@ -73,7 +73,7 @@ function handleResponse(response) {
         "Access-Control-Allow-Methods": "*",
         "Access-Control-Allow-Headers": "*",
       },
-      body: JSON.stringify(facebookLoginRequest),
+      body: facebookLoginRequest,
     };
     console.log("request", requestOptions);
   

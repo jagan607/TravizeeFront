@@ -73,9 +73,8 @@ function handleResponse(response) {
         "Access-Control-Allow-Methods": "*",
         "Access-Control-Allow-Headers": "*",
       },
-      body: JSON.stringify(facebookLoginRequest),
+      body: JSON.stringify({ facebookLoginRequest }),
     };
-    console.log("request", requestOptions);
   
     const response = await fetch(
       "http://localhost:8086/api/auth/facebook/signin",

@@ -25,7 +25,15 @@ const validateForm = (errors) => {
 
 
 const initFacebookLogin = () => {
-  
+  const FB = this.window.FB;
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: "4415972771856425", //replace with ur appid
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: "v7.0",
+    });
+  };
 };
 
 class Login extends Component {
@@ -43,40 +51,27 @@ class Login extends Component {
     this.getFacebookAccessToken = this.getFacebookAccessToken.bind(this);
   }
 
-  componentDidMount(){
-
-  window.fbAsyncInit = function () {
-    window.FB.init({
-      appId: "4415972771856425", //replace with ur appid
-      autoLogAppEvents: true,
-      xfbml: true,
-      version: "v7.0",
-    });
-  };
-  }
-
   componentWillMount(){
 
   
   }
 
   getFacebookAccessToken() {
-    const {facebookLogin} = this.props;
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
       window.FB.login(
         function (response) {
           if (response.status === "connected") {
             const facebookLoginRequest = {
               accessToken: response.authResponse.accessToken,
             };
-            
-            facebookLogin(facebookLoginRequest);
-            console.log("response",response);
+            this.props.facebookLogin(facebookLoginRequest);
           } else {
             console.log(response);
           }
         },
         { scope: "email" }
       );
+  }
   
   };
 

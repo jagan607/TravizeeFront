@@ -64,13 +64,13 @@ class Login extends Component {
     const {facebookLogin} = this.props;
       window.FB.login(
         function (response) {
+          console.log("props", this.props.facebookLogin);
           if (response.status === "connected") {
             const facebookLoginRequest = {
               accessToken: response.authResponse.accessToken,
             };
             
             facebookLogin(facebookLoginRequest);
-            console.log("response",response);
           } else {
             console.log(response);
           }

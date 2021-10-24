@@ -61,22 +61,21 @@ class Login extends Component {
   }
 
   getFacebookAccessToken() {
-    const {facebookLogin} = this.props;
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
       window.FB.login(
         function (response) {
           if (response.status === "connected") {
             const facebookLoginRequest = {
               accessToken: response.authResponse.accessToken,
             };
-            
-            facebookLogin(facebookLoginRequest);
-            console.log("response",response);
+            this.props.facebookLogin(facebookLoginRequest);
           } else {
             console.log(response);
           }
         },
         { scope: "email" }
       );
+  }
   
   };
 

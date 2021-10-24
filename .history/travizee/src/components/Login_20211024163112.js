@@ -70,7 +70,6 @@ class Login extends Component {
             };
             
             facebookLogin(facebookLoginRequest);
-            console.log("response",response);
           } else {
             console.log(response);
           }
