@@ -4,7 +4,7 @@ import { userActions } from "./../_actions/user.actions";
 import { connect } from "react-redux";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import DehazeIcon from '@material-ui/icons/Dehaze';
-import logo from './../images/logo.png'
+import logo from './../images/logo'
 
 
 class ProfileInfo extends Component {
@@ -34,7 +34,7 @@ class ProfileInfo extends Component {
           >
             <Container>
               <Navbar.Brand href="/" style={{ color: "#2b6777" }}>
-              <img src={logo} height="30" width="30" />
+                <img src={logo} height="60" width="90" />
               </Navbar.Brand>
 
               <Navbar.Toggle arias-control="responsive-navbar-nav">

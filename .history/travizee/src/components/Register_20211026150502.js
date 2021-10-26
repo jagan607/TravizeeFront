@@ -105,7 +105,7 @@ class Register extends Component {
           >
             <Container>
               <Navbar.Brand href="/" style={{ color: "#2b6777" }}>
-              <img src={logo} height="30" width="30" />
+                <img src={logo} height="60" width="90" />
               </Navbar.Brand>
 
               <Navbar.Toggle arias-control="responsive-navbar-nav">

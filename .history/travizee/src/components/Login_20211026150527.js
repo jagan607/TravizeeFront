@@ -127,7 +127,7 @@ class Login extends Component {
         <Navbar collapseOnSelect style={{backgroundColor:'#fff', paddingRight:'5%', position:'relative'}}  expand='sm' variant='dark' fixed='top'>
                       <Container>
                       <Navbar.Brand href='/' style={{color:'#2b6777'}}> 
-                      <img src={logo} height="30" width="30" />
+                      <img src={logo} height="30" width="40" />
                         </Navbar.Brand>
 
 
