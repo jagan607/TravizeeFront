@@ -210,14 +210,14 @@ class Login extends Component {
                       <Link to={"/forgotPassword"}>Forgot password?</Link>
                     </p>
                   </form>
-
+                  {/* <div class="fb-login-button" data-size="large" data-auto-logout-link="false" onClick={this.getFacebookAccessToken}></div> */}
 
                   <button
                       type="submit"
                       className="btnFacebook"
                       onClick = {this.getFacebookAccessToken}
                     >
-                      Facebook Login
+                      Sign in
                     </button>
                 </div>  
               )}

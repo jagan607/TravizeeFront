@@ -4,7 +4,7 @@ import { Login } from "./components/Login";
 import {Wallet} from "./components/Wallet";
 import { history } from "./_helpers/history";
 import { PrivateRoute } from "./components/PrivateRoute";
-import { ProfileInfo } from "./components/ProfileInfo";
+import {ProfileInfo} from "./components/ProfileInfo";
 import { connect } from "react-redux";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 

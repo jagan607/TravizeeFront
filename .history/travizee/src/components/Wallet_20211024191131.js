@@ -6,7 +6,7 @@ import { userActions } from "./../_actions/user.actions";
 import "./../index.css";  // can replace the css file with your own one here.
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import DehazeIcon from '@material-ui/icons/Dehaze';
-import ReactGifLoader from "./ReactGifLoader";
+
 class Wallet extends Component {
     constructor(props) {
       super(props);
@@ -16,8 +16,7 @@ class Wallet extends Component {
     }
 
     render(){
-      const { errors } = this.state;
-      let { isLoading } = false;
+
         return(
             <div style={{backgroundColor:"#fff", zIndex:'1'}} className="App">
            <>
@@ -45,24 +44,6 @@ class Wallet extends Component {
                     </Navbar>
                     </>
                     <div className="new-login-bg"></div>
-                    <div
-          style={
-            isLoading
-              ? {
-                  backgroundColor: "rgba(240,84,84,0.6)",
-                  marginTop: "20vh",
-                  height: "20vh",
-                }
-              : { backgroundColor: "#fff" }
-          }
-          className="inner-login"
-        >
-          {isLoading ? (
-            <ReactGifLoader></ReactGifLoader>
-          ) : (
-            <h3 style={{ color: "#222831" }}>Balance</h3>
-          )}
-        </div>
                     </div>
         );
     }

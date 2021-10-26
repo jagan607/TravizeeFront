@@ -87,7 +87,7 @@ export const userActions = {
       userService.facebookLogin(facebookLoginRequest).then(
         (user) => {
           dispatch(success(user));
-          history.push("/profile");
+          history.push("/wallet");
         },
         (error) => {
           Swal.fire({

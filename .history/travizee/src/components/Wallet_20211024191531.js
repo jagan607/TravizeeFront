@@ -6,7 +6,7 @@ import { userActions } from "./../_actions/user.actions";
 import "./../index.css";  // can replace the css file with your own one here.
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import DehazeIcon from '@material-ui/icons/Dehaze';
-import ReactGifLoader from "./ReactGifLoader";
+
 class Wallet extends Component {
     constructor(props) {
       super(props);
@@ -60,7 +60,47 @@ class Wallet extends Component {
           {isLoading ? (
             <ReactGifLoader></ReactGifLoader>
           ) : (
-            <h3 style={{ color: "#222831" }}>Balance</h3>
+            <form onSubmit={this.handleSubmit}>
+              <h3 style={{ color: "#222831" }}>Sign Up</h3>
+
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="form-control"
+                  placeholder="Enter email"
+                  onChange={this.handleChange}
+                  noValidate
+                />
+                {errors.email.length > 0 && (
+                  <span className="error">{errors.email}</span>
+                )}
+              </div>
+
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type={this.state.type}
+                  name="password"
+                  className="form-control"
+                  placeholder="Enter password"
+                  onChange={this.handleChange}
+                  noValidate
+                />
+
+                {errors.password.length > 0 && (
+                  <span className="error">{errors.password}</span>
+                )}
+              </div>
+
+              <button type="submit" className="btn btn-light">
+                Sign Up
+              </button>
+              <p className="forgot-password text-right">
+                Already registered? <a href="/login">Login</a>
+              </p>
+            </form>
           )}
         </div>
                     </div>
