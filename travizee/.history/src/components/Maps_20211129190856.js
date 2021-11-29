@@ -13,9 +13,10 @@ const Wrapper = styled.main`
 `;
 
 class Maps extends Component {
+    constructor(props) {
+        super(props);
 
-
-    state = {
+    this.state = {
         mapApiLoaded: false,
         mapInstance: null,
         mapApi: null,
@@ -27,8 +28,9 @@ class Maps extends Component {
         draggable: true,
         lat: null,
         lng: null,
-        stop : false
+        stop : props.location.state.stop
     };
+}
 
     componentWillMount() {
         this.setCurrentLocation();
@@ -142,7 +144,7 @@ class Maps extends Component {
                     onChildClick={() => console.log('child click')}
                     onClick={this._onClick}
                     bootstrapURLKeys={{
-                        key: 'KEY',
+                        key: 'AIzaSyARUlhG7Q8zy9W4-Nf1N5Bx5MorpJmiVJ8',
                         libraries: ['places', 'geometry'],
                     }}
                     yesIWantToUseGoogleMapApiInternals

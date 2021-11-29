@@ -27,7 +27,7 @@ class Maps extends Component {
         draggable: true,
         lat: null,
         lng: null,
-        stop : false
+        stop : props.location.state.stop
     };
 
     componentWillMount() {
@@ -142,7 +142,7 @@ class Maps extends Component {
                     onChildClick={() => console.log('child click')}
                     onClick={this._onClick}
                     bootstrapURLKeys={{
-                        key: 'KEY',
+                        key: 'AIzaSyARUlhG7Q8zy9W4-Nf1N5Bx5MorpJmiVJ8',
                         libraries: ['places', 'geometry'],
                     }}
                     yesIWantToUseGoogleMapApiInternals
